@@ -1,0 +1,26 @@
+Raffle or Drawing
+
+1- Create DynamoDB
+	- table name : devops90_raffle
+	- partition key : email(string)
+	- object : {email(string), name(string), phone(string), won(string)}
+	- table class : DynamoDB Standard-IA
+	- capacity mode : on-demand(simplify billing)
+
+2- Create Lambda Functions
+	- apply : put item in DynamoDB
+	- count : get items count
+	- draw  : choose 3 random items and mark them as winners
+
+3- Create API Gateway
+	- Create domain name [optional if you have one]
+	- Create certificate for this domain from ACM
+	- Add the domain as a custom domain name to API Gateway
+	- Create dns A record link domain with API endpoint alias to API gateway API
+	- custom domain API mapping
+	- connect lambda function with api gateway
+
+4- enable mutual tls authentication for api gateway
+
+5- host html pages on s3 and cloud front
+

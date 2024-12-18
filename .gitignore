@@ -1,0 +1,28 @@
+# Local Terraform files
+.terraform/                
+.terraform.lock.hcl       
+
+# Terraform state files
+*.tfstate                  
+*.tfstate.backup           
+
+# Crash logs
+crash.log                  
+
+
+# Ignore plan files
+*.tfplan                  
+
+# Ignore other system or IDE files
+.DS_Store                  
+Thumbs.db                  
+.idea/                     
+*.swp                      
+*.bak                      
+*.tmp                      
+
+# Logs
+*.log                      
+
+#infracost
+.infracost

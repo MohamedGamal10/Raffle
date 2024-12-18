@@ -42,26 +42,27 @@ resource "aws_iam_role_policy_attachment" "cloudwatch_logs_full_access" {
 
 locals {
   source_file   = var.source_file_path
-  file_name     = basename(local.source_file)                      # Extract the file name (index.js)
-  zip_file_name = replace(local.file_name, ".js", ".zip")         # Replace .js with .zip to get the ZIP file name
+  file_name     = basename(local.source_file)                     
 }
 
-data "archive_file" "lambda_zip" {
-  type        = "zip"
-  source_file = local.source_file # Path to your local index.js file
-  output_path = "${local.zip_file_name}"
+resource "null_resource" "zip_lambda" {
+  provisioner "local-exec" {
+    command = "cd ${local.source_file} && zip -r ${local.file_name}.zip ."
+  }
 }
+
+
 
 # Lambda Function
 resource "aws_lambda_function" "lambda_function" {
   function_name = var.lambda_function_name
   role          = aws_iam_role.lambda_role.arn
   runtime       = var.runtime
-  handler       = var.handler  # Ensure your Lambda code has an "index.js" with "handler" exported.
+  handler       = var.handler 
   memory_size   = var.memory_size
   timeout       = var.timeout
 
   # Use the local ZIP file created by the archive_file data source
-  filename      = data.archive_file.lambda_zip.output_path
+  filename      = "${local.source_file}/${local.file_name}.zip"
 
 }

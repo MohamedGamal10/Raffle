@@ -19,7 +19,8 @@ Thumbs.db
 .idea/                     
 *.swp                      
 *.bak                      
-*.tmp                      
+*.tmp   
+*.zip                   
 
 # Logs
 *.log                      

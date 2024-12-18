@@ -12,7 +12,7 @@ DynamoDB_tag_description = "DynamoDB table for storing raffle entries"
 
 //applylambda function 
 apply_lambda_function_name = "apply_lambda"
-apply_lambda_source_file_path = "../Project/apply.js"
+apply_lambda_source_file_path = "../Project/apply"
 apply_lambda_runtime = "nodejs20.x"
 apply_lambda_handler = "apply.handler"
 apply_lambda_memory_size = 129

@@ -8,6 +8,12 @@ Raffle or Drawing
 	- capacity mode : on-demand(simplify billing)
 
 2- Create Lambda Functions
+	- create IAM role [access dynamodb and create logs on cloudwatch]
+		- Raffle_Role : AmazonDynamoDBFullAccess, AWSLambdaDynamoDBExecutionRole,
+				  AWSLambdaInvocation-DynamoDB, CloudWatchLogsFullAccess
+
+		- create lambda function apply_raffle , runtime : Node.js 20.x ,
+	      add excution_role : Raffle_Role  ,Memory : 129 MB , timeout : 1 sec 
 	- apply : put item in DynamoDB
 	- count : get items count
 	- draw  : choose 3 random items and mark them as winners

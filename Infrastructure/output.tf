@@ -13,3 +13,11 @@ output "raffle_table_arn" {
 output "apply_lambda_function_name" {
   value = module.apply_lambda.lambda_function_name
 }
+
+output "count_lambda_function_name" {
+  value = module.count_lambda.lambda_function_name
+}
+
+output "draw_lambda_function_name" {
+  value = module.draw_lambda.lambda_function_name
+}

@@ -29,3 +29,8 @@ variable "timeout" {
   description = "value for timeout"
   type = number
 }
+
+variable "lambda_role" {
+  description = "Lambda Role"
+  type = string
+}
